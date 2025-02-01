@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+      "module": "NodeNext",
+      "moduleResolution": "NodeNext",  // Change from "node" to "NodeNext"
+      "baseUrl": "src",
+      "outDir": "dist",
+      "sourceMap": true,
+      "noImplicitAny": true
+    },
+    "include": ["src/**/*", "src/router/users.ts", "src/controllers/users.ts", "src/index.ts"]
+  }
+  
