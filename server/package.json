@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon",
+    "start": "node dist/index.js",
+    "dev": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -18,9 +19,7 @@
     "@types/express": "^4.17.21",
     "@types/lodash": "^4.17.15",
     "@types/mongoose": "^5.11.97",
-    "nodemon": "^3.1.9",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.7.3"
+    "ts-node": "^10.9.2"
   },
   "dependencies": {
     "body-parser": "^1.20.3",
@@ -30,6 +29,7 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "lodash": "^4.17.21",
-    "mongoose": "^8.9.5"
+    "mongoose": "^8.9.5",
+    "nodemon": "^3.1.9"
   }
 }
