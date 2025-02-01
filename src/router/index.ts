@@ -1,13 +1,11 @@
-import express from 'express'
+import express from 'express';
 
-import authentication from './authentication'
-
+import authentication from './authentication';
 
 const router = express.Router();
 
-export default (): express.Router =>{
-    authentication(router);
+export default (): express.Router => {
+  authentication(router);
 
-    
-    return router;
-}
+  return router;
+};

@@ -1,5 +1,5 @@
 import express from 'express';
-import http from 'http' ;
+import http from 'http';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import compression from 'compression';
@@ -8,13 +8,13 @@ import mongoose from 'mongoose';
 import router from './router/index';
 import dotenv from 'dotenv';
 
-const app = express(); 
+const app = express();
 
-app.use(cors({
-    credentials: true 
-}));
-
-
+app.use(
+  cors({
+    credentials: true,
+  })
+);
 
 app.use(compression());
 app.use(cookieParser());
@@ -24,15 +24,16 @@ dotenv.config();
 
 const server = http.createServer(app);
 
-server.listen(8080,() => {
-    console.log('Server running on http://localhost:8080/')
-})
+server.listen(8080, () => {
+  console.log('Server running on http://localhost:8080/');
+});
 
-const MONGO = process.env.MONGO_URL
+const MONGO = process.env.MONGO_URL;
 
 mongoose.Promise = Promise;
 
-mongoose.connect(MONGO)
+mongoose
+  .connect(MONGO)
   .then(() => {
     console.log('Connected to MongoDB');
   })
@@ -44,4 +45,4 @@ mongoose.connection.on('error', (error: Error) => {
   console.log('MongoDB error:', error);
 });
 
-app.use('/api' , router());
+app.use('/api', router());
