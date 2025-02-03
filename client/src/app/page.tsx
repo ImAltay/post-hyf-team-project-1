@@ -1,13 +1,11 @@
-// import Image from 'next/image';
-// import calImage from '../assets/pic1.webp';
+import React from 'react';
 
 export default function Home() {
   return (
     <div>
-      <h3>Header_Component</h3>
-      <h1>Keep track of your calories</h1>
-      {/* <Image src={calImage} alt="home" width={500} height={500} /> */}
-      <h3>Footer_Component</h3>
+      <div className="bg-green-500 text-white p-4 text-center">
+        Here is the Home page - Tailwind is working! 🎉
+      </div>
     </div>
   );
 }
