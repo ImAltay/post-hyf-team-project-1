@@ -1,4 +1,4 @@
-// app/login/page.tsx
+'use client';
 import React from 'react';
 import InputField from '../../components/InputField';
 
@@ -9,8 +9,8 @@ const Login = () => {
         Login
       </h1>
       <form className='bg-white dark:bg-gray-800 p-6 rounded shadow-md w-full max-w-sm'>
-        <InputField label='Email' name='email' type='text' />
-        <InputField label='Password' name='password' type='password' />
+        {/* <InputField label='Email' name='email' type='text' />
+        <InputField label='Password' name='password' type='password' /> */}
         <button
           type='submit'
           className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'>

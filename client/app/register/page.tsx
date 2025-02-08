@@ -1,6 +1,9 @@
 'use client';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import InputField from '../../components/InputField';
+import { registerUser } from '../../slices/registerSlice';
+import { RootState } from '../../store';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +12,11 @@ const Register = () => {
     password: '',
   });
 
+  const dispatch = useDispatch();
+  const { loading, error, success } = useSelector(
+    (state: RootState) => state.register
+  );
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
@@ -16,26 +24,9 @@ const Register = () => {
     });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    try {
-      const response = await fetch('http://127.0.0.1:5000/api/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-      if (response.ok) {
-        // Handle successful registration
-        console.log('Registration successful');
-      } else {
-        // Handle errors
-        console.error('Registration failed');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
+    dispatch(registerUser(formData));
   };
 
   return (
@@ -66,9 +57,12 @@ const Register = () => {
         />
         <button
           type='submit'
-          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'>
-          Register
+          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
+          disabled={loading}>
+          {loading ? 'Registering...' : 'Register'}
         </button>
+        {error && <p className='text-red-500'>{error}</p>}
+        {success && <p className='text-green-500'>Registration successful!</p>}
       </form>
     </div>
   );

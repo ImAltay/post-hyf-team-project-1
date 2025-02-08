@@ -1,3 +1,4 @@
+'use client';
 type InputFieldProps = {
   label: string;
   name: string;
