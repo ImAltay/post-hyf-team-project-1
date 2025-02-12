@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import InputField from '../../components/InputField';
+import { toast } from 'react-toastify';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -19,7 +20,7 @@ const Register = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://127.0.0.1:5000/api/register', {
+      const response = await fetch(`http://localhost:5000/api/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -27,14 +28,12 @@ const Register = () => {
         body: JSON.stringify(formData),
       });
       if (response.ok) {
-        // Handle successful registration
-        console.log('Registration successful');
+        toast.success('Registration successful');
       } else {
-        // Handle errors
-        console.error('Registration failed');
+        toast.error('Registration failed');
       }
-    } catch (error) {
-      console.error('Error:', error);
+    } catch {
+      toast.error('something went wrong');
     }
   };
 

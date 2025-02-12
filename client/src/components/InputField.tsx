@@ -3,14 +3,14 @@ type InputFieldProps = {
   label: string;
   name: string;
   type: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const InputField: React.FC<InputFieldProps> = ({
   label,
   name,
   type,
-  onChange,
+  onChange = () => {},
 }) => (
   <div className='mb-4'>
     <label className='block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2'>
